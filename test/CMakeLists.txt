@@ -1,5 +1,6 @@
 set(TEST_SRCS
     test_event.cpp
+    test_dispatcher.cpp
     )
 
 foreach(TEST_FILE ${TEST_SRCS})
