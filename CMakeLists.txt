@@ -19,6 +19,7 @@ include(cmake/clang-dev-tools.cmake)
 
 set(LIBAOPP_SRCS
     src/event.cpp
+    src/event_queue.cpp
     )
 
 add_library(aopp SHARED ${LIBAOPP_SRCS})
