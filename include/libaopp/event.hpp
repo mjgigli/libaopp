@@ -27,12 +27,19 @@
 #ifndef LIBAOPP_EVENT_HPP_
 #define LIBAOPP_EVENT_HPP_
 
+#include <memory>
+
 namespace aopp {
 
 class Event {
  public:
   virtual ~Event();
 };
+
+template <typename T, typename... Args>
+std::shared_ptr<T> make_event(Args... args) {
+  return std::make_shared<T>(args...);
+}
 
 }  // namespace aopp
 

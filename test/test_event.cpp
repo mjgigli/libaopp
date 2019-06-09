@@ -44,20 +44,20 @@ class TestEvent : public aopp::Event {
 TEST(EventConstructorTest, DefaultCOnstructor) { TestEvent evt; }
 
 TEST(EventPtrConstructionTest, NonConst) {
-  std::shared_ptr<TestEvent> evt = std::make_shared<TestEvent>();
+  std::shared_ptr<TestEvent> evt = aopp::make_event<TestEvent>();
   EXPECT_EQ(evt->foo(), 0);
   evt->foo(5);
   EXPECT_EQ(evt->foo(), 5);
 }
 
 TEST(EventPtrConstructionTest, Const) {
-  std::shared_ptr<const TestEvent> evt = std::make_shared<const TestEvent>();
+  std::shared_ptr<const TestEvent> evt = aopp::make_event<const TestEvent>();
   EXPECT_EQ(evt->foo(), 0);
   // evt->foo(5); // Wouldn't compile, because `evt` is const pointer
 }
 
 TEST(EventPtrCastTest, TestEvent) {
-  std::shared_ptr<aopp::Event> evt = std::make_shared<TestEvent>();
+  std::shared_ptr<aopp::Event> evt = aopp::make_event<TestEvent>();
   TestEvent& test_evt = reinterpret_cast<TestEvent&>(*evt);
   test_evt.foo(5);
   EXPECT_EQ(test_evt.foo(), 5);
